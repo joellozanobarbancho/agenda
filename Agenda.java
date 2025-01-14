@@ -14,12 +14,12 @@ public class Agenda {
     static void showOptions(int input) {
         System.out.println(
                 "You selected the option to " + switch (input) {
-            case 1 -> "create new contact";
-            case 2 -> "search for existing contact";
-            case 3 -> "update an existing contact";
-            case 4 -> "delete an existing contact";
-            case 5 -> "exit";
-            default -> "do nothing";
+            case 1 -> "create new contact\n";
+            case 2 -> "search for existing contact\n";
+            case 3 -> "update an existing contact\n";
+            case 4 -> "delete an existing contact\n";
+            case 5 -> "exit\n";
+            default -> "do nothing\n";
         });
     }
 }

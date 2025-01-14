@@ -20,19 +20,20 @@ public class Contact {
                 "\nTEL: " + ct.tel +
                 "\nEMAIL: " + ct.email
         );
+        System.out.println();
     }
     static void createContact(Scanner sc, Contact[] contacts, int i) {
         if (contacts == null) return;
-        System.out.println("Insert new contact's name: ");
+        System.out.println("Insert new contact's name:");
         String name = sc.next();
         System.out.println("Insert contact's surname: ");
         String surname = sc.next();
-        System.out.println("Insert contact's phone: ");
+        System.out.println("Insert contact's phone:");
         String tel = sc.next();
-        System.out.println("Insert contact's email: ");
+        System.out.println("Insert contact's email:");
         String email = sc.next();
         contacts[i] = new Contact(i, name, surname, tel, email);
-        System.out.println("New contact created!");
+        System.out.println("\nNew contact created!\n");
         Contact.showContact(contacts[i]);
     }
     static void searchContact(Scanner sc, Contact[] contacts) {
@@ -58,19 +59,20 @@ public class Contact {
     }
     static void updateContact(Scanner sc, Contact[] contacts, int len) {
         if (contacts == null) return;
-        System.out.println("Insert contact's ID: ");
+        System.out.println("Insert contact's ID:");
         int id = sc.nextInt();
         if (id < len) createContact(sc, contacts, id);
-        else System.out.println("Error: Invalid ID");
+        else System.out.println("Error: Invalid ID\n");
+        System.out.println('\n');
     }
     static void deleteContact(Scanner sc, Contact[] contacts, int len) {
         if (contacts == null) return;
-        System.out.println("Insert contact's ID: ");
+        System.out.println("Insert contact's ID:");
         int id = sc.nextInt();
         if (id < len) {
             contacts[id] = null;
-            System.out.println("Contact deleted!");
+            System.out.println("Contact deleted!\n");
         }
-        else System.out.println("Error: Invalid ID");
+        else System.out.println("Error: Invalid ID\n");
     }
 }
