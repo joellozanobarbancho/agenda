@@ -12,7 +12,7 @@ public class Utils {
         String s = sc.next();
         boolean found = false;
         for (Contact ct : contacts) {
-            if (ct.name.equals(s)) {
+            if (ct.name.contains(s)) {
                 found = true;
                 Contact.showContact(ct);
                 break;
@@ -26,7 +26,7 @@ public class Utils {
         String s = sc.next();
         boolean found = false;
         for (Contact ct : contacts) {
-            if (ct.surname.equals(s)) {
+            if (ct.surname.contains(s)) {
                 found = true;
                 Contact.showContact(ct);
                 break;
@@ -40,7 +40,7 @@ public class Utils {
         String s = sc.next();
         boolean found = false;
         for (Contact ct : contacts) {
-            if (ct.tel.equals(s)) {
+            if (ct.tel.contains(s)) {
                 found = true;
                 Contact.showContact(ct);
                 break;
@@ -54,7 +54,7 @@ public class Utils {
         String s = sc.next();
             boolean found = false;
             for (Contact ct : contacts) {
-                if (ct.email.equals(s)) {
+                if (ct.email.contains(s)) {
                     found = true;
                     Contact.showContact(ct);
                     break;
