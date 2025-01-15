@@ -18,15 +18,15 @@ public class Agenda {
         if (sc == null) return;
         System.out.println("Insert new contact's name:");
         String name = sc.next();
-        System.out.println("Insert contact's surname: ");
+        System.out.println("Insert new contact's surname: ");
         String surname = sc.next();
-        System.out.println("Insert contact's phone:");
+        System.out.println("Insert new contact's phone:");
         String tel = sc.next();
-        System.out.println("Insert contact's email:");
+        System.out.println("Insert new contact's email:");
         String email = sc.next();
         this.contacts[this.id] = new Contact(this.id, name, surname, tel, email);
         System.out.println("\nNew contact created!\n");
-        showContact(this.contacts[this.id]);
+        showContact(this.contacts[this.id++]);
     }
     void searchContact(Scanner sc) {
         if (sc == null) return;
@@ -52,7 +52,19 @@ public class Agenda {
         if (sc == null) return;
         System.out.println("Insert contact's ID:");
         int id = sc.nextInt();
-        if (id < this.id) createContact(sc);
+        if (id < this.id) {
+            System.out.println("Insert contact's name:");
+            String name = sc.next();
+            System.out.println("Insert contact's surname: ");
+            String surname = sc.next();
+            System.out.println("Insert contact's phone:");
+            String tel = sc.next();
+            System.out.println("Insert contact's email:");
+            String email = sc.next();
+            this.contacts[id] = new Contact(id, name, surname, tel, email);
+            System.out.println("\nContact updated!\n");
+            showContact(this.contacts[id]);
+        }
         else System.out.println("Error: Invalid ID\n");
         System.out.println('\n');
     }
@@ -66,7 +78,7 @@ public class Agenda {
         }
         else System.out.println("Error: Invalid ID\n");
     }
-
+    // Utils
     private void searchAll() {
         for (Contact ct : this.contacts)
             this.showContact(ct);
