@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Agenda {
     Contact[] contacts = new Contact[100];
     int id = 0;
+
     void showContact(Contact c) {
         if (c == null) return;
         System.out.println(
@@ -73,7 +74,7 @@ public class Agenda {
         System.out.println("Insert contact's ID:");
         int id = sc.nextInt();
         if (id < this.id) {
-            this.contacts[this.id] = null;
+            this.contacts[id] = null;
             System.out.println("Contact deleted!\n");
         }
         else System.out.println("Error: Invalid ID\n");
@@ -87,56 +88,53 @@ public class Agenda {
         if (sc == null) return;
         System.out.println("Insert contact's name: ");
         String s = sc.next();
-        boolean found = false;
-        for (Contact ct : this.contacts) {
-            if (ct.name.contains(s)) {
-                found = true;
-                this.showContact(ct);
-                break;
+        for (Contact c : this.contacts) {
+            if (c == null) break;
+            if (c.name.contains(s)) {
+                this.showContact(c);
+                return;
             }
         }
-        if (!found) System.out.println("Contact not found :(");
+        System.out.println("\nContact not found :(\n");
     }
     private void searchBySurname(Scanner sc) {
         if (sc == null) return;
-        System.out.println("Insert contact's name: ");
+        System.out.println("Insert contact's surname:");
         String s = sc.next();
-        boolean found = false;
-        for (Contact ct : this.contacts) {
-            if (ct.surname.contains(s)) {
-                found = true;
-                this.showContact(ct);
-                break;
+        for (Contact c : this.contacts) {
+            if (c == null) break;
+            if (c.surname.contains(s)) {
+                this.showContact(c);
+                return;
             }
         }
-        if (!found) System.out.println("Contact not found :(");
+        System.out.println("\nContact not found :(\n");
     }
     private void searchByPhone(Scanner sc) {
         if (sc == null) return;
-        System.out.println("Insert contact's name: ");
+        System.out.println("Insert contact's phone:");
         String s = sc.next();
-        boolean found = false;
-        for (Contact ct : this.contacts) {
-            if (ct.tel.contains(s)) {
-                found = true;
-                this.showContact(ct);
-                break;
+        for (Contact c : this.contacts) {
+            if (c == null) break;
+            if (c.tel.contains(s)) {
+                this.showContact(c);
+                return;
             }
-        }if (!found) System.out.println("Contact not found :(");
+        }
+        System.out.println("\nContact not found :(\n");
     }
     private void searchByEmail(Scanner sc) {
         if (sc == null) return;
-        System.out.println("Insert contact's name: ");
+        System.out.println("Insert contact's email:");
         String s = sc.next();
-        boolean found = false;
-        for (Contact ct : this.contacts) {
-            if (ct.email.contains(s)) {
-                found = true;
-                this.showContact(ct);
-                break;
+        for (Contact c : this.contacts) {
+            if (c == null) break;
+            if (c.email.contains(s)) {
+                this.showContact(c);
+                return;
             }
         }
-        if (!found) System.out.println("Contact not found :(");
+        System.out.println("\nContact not found :(\n");
     }
 }
 
