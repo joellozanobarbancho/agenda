@@ -12,7 +12,7 @@ public class Main {
                          5. Exit."""
         );
     }
-    private static void showOptions(int input) {
+    private static void showOption(int input) {
         System.out.println(
                 "You selected the option to " + switch (input) {
                     case 1 -> "create new contact\n";
@@ -30,7 +30,7 @@ public class Main {
         while (true) {
             showMenu();
             int input = sc.nextInt();
-            showOptions(input);
+            showOption(input);
             switch (input) {
                 case 1 -> a.createContact(sc);
                 case 2 -> a.searchContact(sc);
