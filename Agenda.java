@@ -49,15 +49,15 @@ public class Agenda {
             System.out.println("\nError: Invalid ID\n");
             return;
         }
+        Contact c = this.contacts[id];
         System.out.println("Insert contact's name:");
-        String name = this.sc.next();
+        c.setName(this.sc.next());
         System.out.println("Insert contact's surname: ");
-        String surname = this.sc.next();
+        c.setSurname(this.sc.next());
         System.out.println("Insert contact's phone:");
-        String tel = this.sc.next();
+        c.setTel(this.sc.next());
         System.out.println("Insert contact's email:");
-        String email = this.sc.next();
-        this.contacts[id] = new Contact(id, name, surname, tel, email);
+        c.setEmail(this.sc.next());
         System.out.println("\nContact updated!\n");
         System.out.println(this.contacts[id]);
     }
@@ -107,7 +107,7 @@ public class Agenda {
         for (int i = 0; i < this.id; i++) {
             Contact c = this.contacts[i];
             if (c == null) continue;
-            if (c.name.contains(s)) {
+            if (c.getName().contains(s)) {
                 System.out.println(c);
                 return;
             }
@@ -121,7 +121,7 @@ public class Agenda {
         for (int i = 0; i < this.id; i++) {
             Contact c = this.contacts[i];
             if (c == null) continue;
-            if (c.surname.contains(s)) {
+            if (c.getSurname().contains(s)) {
                 System.out.println(c);
                 return;
             }
@@ -135,7 +135,7 @@ public class Agenda {
         for (int i = 0; i < this.id; i++) {
             Contact c = this.contacts[i];
             if (c == null) continue;
-            if (c.tel.contains(s)) {
+            if (c.getTel().contains(s)) {
                 System.out.println(c);
                 return;
             }
@@ -149,7 +149,7 @@ public class Agenda {
         for (int i = 0; i < this.id; i++) {
             Contact c = this.contacts[i];
             if (c == null) continue;
-            if (c.email.contains(s)) {
+            if (c.getEmail().contains(s)) {
                 System.out.println(c);
                 return;
             }
