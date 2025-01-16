@@ -11,4 +11,15 @@ public class Contact {
         this.tel = tel;
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return (
+                "ID: " + id + '\n' +
+                        "NAME: " + name + '\n' +
+                        "SURNAME: " + surname + '\n' +
+                        "TEL: " + tel + '\n' +
+                        "EMAIL: " + email + '\n'
+        );
+    }
 }
