@@ -1,12 +1,14 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Agenda {
     Scanner sc;
-    Contact[] contacts = new Contact[100];
-    int id = 0;
+    ArrayList<Contact> contacts;
+    int count = 0;
 
     Agenda(Scanner sc) {
         this.sc = sc;
+        this.contacts = new ArrayList<Contact>();
     }
 
     void createContact() {
@@ -18,9 +20,9 @@ public class Agenda {
         String tel = this.sc.next();
         System.out.println("Insert new contact's email:");
         String email = this.sc.next();
-        this.contacts[this.id] = new Contact(this.id, name, surname, tel, email);
+        contacts.add(new Contact(this.count, name, surname, tel, email));
         System.out.println("\nNew contact created!\n");
-        System.out.println(this.contacts[this.id++]);
+        System.out.println(this.contacts.get(this.count++));
     }
 
     void searchContact() {
@@ -45,31 +47,29 @@ public class Agenda {
     void updateContact() {
         System.out.println("Insert contact's ID:");
         int id = this.sc.nextInt();
-        if (id >= this.id || id < 0) {
-            System.out.println("\nError: Invalid ID\n");
-            return;
-        }
-        Contact c = this.contacts[id];
+        Contact ct = searchByID(id);
+        if (ct == null) return;
         System.out.println("Insert contact's name:");
-        c.setName(this.sc.next());
+        ct.setName(this.sc.next());
         System.out.println("Insert contact's surname: ");
-        c.setSurname(this.sc.next());
+        ct.setSurname(this.sc.next());
         System.out.println("Insert contact's phone:");
-        c.setTel(this.sc.next());
+        ct.setTel(this.sc.next());
         System.out.println("Insert contact's email:");
-        c.setEmail(this.sc.next());
+        ct.setEmail(this.sc.next());
         System.out.println("\nContact updated!\n");
-        System.out.println(this.contacts[id]);
+        System.out.println(ct);
     }
 
     void deleteContact() {
         System.out.println("Insert contact's ID:");
         int id = this.sc.nextInt();
-        if (id >= this.id || id < 0) {
+        if (id >= this.count || id < 0) {
             System.out.println("\nError: Invalid ID\n");
             return;
         }
-        this.contacts[id] = null;
+        this.contacts.remove(searchByID(id));
+        this.count--;
         System.out.println("Contact deleted!\n");
     }
 
@@ -95,20 +95,25 @@ public class Agenda {
     }
 
     private void showAll() {
-        for (int i = 0; i < this.id; i++) {
-            if (this.contacts[i] == null) continue;
-            System.out.println(this.contacts[i]);
+        for (Contact ct : this.contacts) {
+            System.out.println(ct);
         }
+    }
+
+    private Contact searchByID(int id) {
+        for (Contact ct : this.contacts) {
+            if (id == ct.getId())
+                return ct;
+        }
+        return null;
     }
 
     private void searchByName() {
         System.out.println("Insert contact's name:");
         String s = this.sc.next();
-        for (int i = 0; i < this.id; i++) {
-            Contact c = this.contacts[i];
-            if (c == null) continue;
-            if (c.getName().contains(s)) {
-                System.out.println(c);
+        for (Contact ct : this.contacts) {
+            if (ct.getName().contains(s)) {
+                System.out.println(ct);
                 return;
             }
         }
@@ -118,11 +123,9 @@ public class Agenda {
     private void searchBySurname() {
         System.out.println("Insert contact's surname:");
         String s = this.sc.next();
-        for (int i = 0; i < this.id; i++) {
-            Contact c = this.contacts[i];
-            if (c == null) continue;
-            if (c.getSurname().contains(s)) {
-                System.out.println(c);
+        for (Contact ct : this.contacts) {
+            if (ct.getSurname().contains(s)) {
+                System.out.println(ct);
                 return;
             }
         }
@@ -132,25 +135,22 @@ public class Agenda {
     private void searchByPhone() {
         System.out.println("Insert contact's phone:");
         String s = this.sc.next();
-        for (int i = 0; i < this.id; i++) {
-            Contact c = this.contacts[i];
-            if (c == null) continue;
-            if (c.getTel().contains(s)) {
-                System.out.println(c);
+        for (Contact ct : this.contacts) {
+            if (ct.getTel().contains(s)) {
+                System.out.println(ct);
                 return;
             }
         }
+
         System.out.println("\nContact not found :(\n");
     }
 
     private void searchByEmail() {
         System.out.println("Insert contact's email:");
         String s = this.sc.next();
-        for (int i = 0; i < this.id; i++) {
-            Contact c = this.contacts[i];
-            if (c == null) continue;
-            if (c.getEmail().contains(s)) {
-                System.out.println(c);
+        for (Contact ct : this.contacts) {
+            if (ct.getEmail().contains(s)) {
+                System.out.println(ct);
                 return;
             }
         }
