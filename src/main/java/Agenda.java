@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Agenda {
-    ArrayList<Contact> contacts;
-    int count = 0;
+    private final ArrayList<Contact> contacts;
+    private int count = 0;
 
     public Agenda() {
         this.contacts = new ArrayList<Contact>();
