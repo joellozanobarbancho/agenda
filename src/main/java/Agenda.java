@@ -49,7 +49,6 @@ public class Agenda {
     public Contact searchBySurname(String s) {
         for (Contact c : this.contacts) {
             if (c.getSurname().contains(s)) {
-                System.out.println(c);
                 return c;
             }
         }
@@ -59,7 +58,6 @@ public class Agenda {
     public Contact searchByPhone(String s) {
         for (Contact c : this.contacts) {
             if (c.getPhone().contains(s)) {
-                System.out.println(c);
                 return c;
             }
         }
@@ -69,7 +67,6 @@ public class Agenda {
     public Contact searchByEmail(String s) {
         for (Contact c : this.contacts) {
             if (c.getEmail().contains(s)) {
-                System.out.println(c);
                 return c;
             }
         }
