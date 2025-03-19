@@ -19,7 +19,7 @@ public class Main {
                     switch (searchOption) {
                         case 1 -> {
                             //show all contacts
-                            for (Contact c : a.contacts) i.println(c);
+                            for (Contact c : a.getContacts()) i.println(c);
                         }
                         case 2 -> {
                             String  s = i.toSearch();
