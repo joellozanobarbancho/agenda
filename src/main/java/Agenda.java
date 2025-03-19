@@ -5,7 +5,15 @@ public class Agenda {
     private int count = 0;
 
     public Agenda() {
-        this.contacts = new ArrayList<Contact>();
+        this.contacts = new ArrayList<>();
+    }
+
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     Contact createContact(String[] s) {
