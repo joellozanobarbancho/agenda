@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Agenda {
     private final ArrayList<Contact> contacts;
@@ -8,8 +10,8 @@ public class Agenda {
         this.contacts = new ArrayList<>();
     }
 
-    public ArrayList<Contact> getContacts() {
-        return contacts;
+    public List<Contact> getContacts() {
+        return Collections.unmodifiableList(this.contacts);
     }
 
     public int getCount() {
