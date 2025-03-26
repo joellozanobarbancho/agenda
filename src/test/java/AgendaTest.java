@@ -1,4 +1,8 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AgendaTest {
@@ -11,30 +15,30 @@ class AgendaTest {
 
     @org.junit.jupiter.api.Test
     void createContact() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[]    exampleData1    = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[]    exampleData2    = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[]    exampleData3    = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         assertEquals(0, a.getCount());
         Contact c1 = a.createContact(exampleData1);
         assertEquals(0, c1.getId());
-        assertEquals("name1", c1.getName());
-        assertEquals("surname1", c1.getSurname());
-        assertEquals("phone1", c1.getPhone());
+        assertEquals("name 1", c1.getName());
+        assertEquals("surname 1", c1.getSurname());
+        assertEquals("phone 1", c1.getPhone());
         assertEquals("example1@gmail.com", c1.getEmail());
         assertEquals(1, a.getCount());
         Contact c2 = a.createContact(exampleData2);
         assertEquals(1, c2.getId());
-        assertEquals("name2", c2.getName());
-        assertEquals("surname2", c2.getSurname());
-        assertEquals("phone2", c2.getPhone());
+        assertEquals("name 2", c2.getName());
+        assertEquals("surname 2", c2.getSurname());
+        assertEquals("phone 2", c2.getPhone());
         assertEquals("example2@gmail.com", c2.getEmail());
         assertEquals(2, a.getCount());
         Contact c3 = a.createContact(exampleData3);
         assertEquals(2, c3.getId());
-        assertEquals("name3", c3.getName());
-        assertEquals("surname3", c3.getSurname());
-        assertEquals("phone3", c3.getPhone());
+        assertEquals("name 3", c3.getName());
+        assertEquals("surname 3", c3.getSurname());
+        assertEquals("phone 3", c3.getPhone());
         assertEquals("example3@gmail.com", c3.getEmail());
         assertEquals(3, a.getCount());
     }
@@ -59,21 +63,24 @@ class AgendaTest {
 
     @org.junit.jupiter.api.Test
     void deleteContact() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[] exampleData1 = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[] exampleData2 = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[] exampleData3 = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         a.createContact(exampleData1);
         a.createContact(exampleData2);
         a.createContact(exampleData3);
         a.deleteContact(1);
+        List<Contact> all = a.getContacts();
+        Assertions.assertEquals(2, all.size());
+        Assertions.assertFalse(all.stream().anyMatch(x -> x.getId() == 1));
     }
 
     @org.junit.jupiter.api.Test
     void searchById() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[]    exampleData1    = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[]    exampleData2    = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[]    exampleData3    = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         Contact c1 = a.createContact(exampleData1);
         Contact c2 = a.createContact(exampleData2);
@@ -87,54 +94,54 @@ class AgendaTest {
 
     @org.junit.jupiter.api.Test
     void searchByName() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[]    exampleData1    = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[]    exampleData2    = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[]    exampleData3    = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         Contact c1 = a.createContact(exampleData1);
         Contact c2 = a.createContact(exampleData2);
         Contact c3 = a.createContact(exampleData3);
-        assertEquals(c1, a.searchByName("name1"));
-        assertEquals(c2, a.searchByName("name2"));
-        assertEquals(c3, a.searchByName("name3"));
+        assertEquals(c1, a.searchByName("name 1"));
+        assertEquals(c2, a.searchByName("name 2"));
+        assertEquals(c3, a.searchByName("name 3"));
         assertNull(a.searchByName("Joel"));
     }
 
     @org.junit.jupiter.api.Test
     void searchBySurname() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[]    exampleData1    = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[]    exampleData2    = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[]    exampleData3    = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         Contact c1 = a.createContact(exampleData1);
         Contact c2 = a.createContact(exampleData2);
         Contact c3 = a.createContact(exampleData3);
-        assertEquals(c1, a.searchBySurname("surname1"));
-        assertEquals(c2, a.searchBySurname("surname2"));
-        assertEquals(c3, a.searchBySurname("surname3"));
+        assertEquals(c1, a.searchBySurname("surname 1"));
+        assertEquals(c2, a.searchBySurname("surname 2"));
+        assertEquals(c3, a.searchBySurname("surname 3"));
         assertNull(a.searchBySurname("Lozano"));
     }
 
     @org.junit.jupiter.api.Test
     void searchByPhone() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[]    exampleData1    = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[]    exampleData2    = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[]    exampleData3    = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         Contact c1 = a.createContact(exampleData1);
         Contact c2 = a.createContact(exampleData2);
         Contact c3 = a.createContact(exampleData3);
-        assertEquals(c1, a.searchByPhone("phone1"));
-        assertEquals(c2, a.searchByPhone("phone2"));
-        assertEquals(c3, a.searchByPhone("phone3"));
-        assertNull(a.searchByPhone("phone4"));
+        assertEquals(c1, a.searchByPhone("phone 1"));
+        assertEquals(c2, a.searchByPhone("phone 2"));
+        assertEquals(c3, a.searchByPhone("phone 3"));
+        assertNull(a.searchByPhone("phone 4"));
     }
 
     @org.junit.jupiter.api.Test
     void searchByEmail() {
-        String[]    exampleData1    = {"name1", "surname1", "phone1", "example1@gmail.com"};
-        String[]    exampleData2    = {"name2", "surname2", "phone2", "example2@gmail.com"};
-        String[]    exampleData3    = {"name3", "surname3", "phone3", "example3@gmail.com"};
+        String[]    exampleData1    = {"name 1", "surname 1", "phone 1", "example1@gmail.com"};
+        String[]    exampleData2    = {"name 2", "surname 2", "phone 2", "example2@gmail.com"};
+        String[]    exampleData3    = {"name 3", "surname 3", "phone 3", "example3@gmail.com"};
 
         Contact c1 = a.createContact(exampleData1);
         Contact c2 = a.createContact(exampleData2);
