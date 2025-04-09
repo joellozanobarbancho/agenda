@@ -1,56 +1,63 @@
 public class Main {
     public static void main(String[] args) {
-        Tui     i = new Tui();
+        Tui     t = new Tui();
         Agenda  a = new Agenda();
 
         while (true) {
-            int option = i.showOptions();
+            int option = t.showOptions();
             switch (option) {
                 case 1 -> {
                     String[]    s;
                     Contact     c;
 
-                    s = i.newContact();
+                    s = t.newContact();
                     c = a.createContact(s);
-                    i.println(c);
+                    t.println(c);
                 }
                 case 2 -> {
-                    int searchOption = i.chooseSearchOption();
+                    int         searchOption;
+                    String      s;
+                    Contact     c;
+
+                    searchOption = t.chooseSearchOption();
                     switch (searchOption) {
                         case 1 -> {
                             //show all contacts
-                            for (Contact c : a.getContacts()) i.println(c);
+                            for (Contact contact : a.getContacts()) t.println(contact);
                         }
                         case 2 -> {
-                            String  s = i.toSearch();
-                            Contact c = a.searchByName(s);
-                            i.println(c);
+                            s = t.toSearch();
+                            c = a.searchByName(s);
+                            t.println(c);
                         }
                         case 3 -> {
-                            String  s = i.toSearch();
-                            Contact c = a.searchBySurname(s);
-                            i.println(c);
+                            s = t.toSearch();
+                            c = a.searchBySurname(s);
+                            t.println(c);
                         }
                         case 4 -> {
-                            String  s = i.toSearch();
-                            Contact c = a.searchByPhone(s);
-                            i.println(c);
+                            s = t.toSearch();
+                            c = a.searchByPhone(s);
+                            t.println(c);
                         }
                         case 5 -> {
-                            String  s = i.toSearch();
-                            Contact c = a.searchByEmail(s);
-                            i.println(c);
+                            s = t.toSearch();
+                            c = a.searchByEmail(s);
+                            t.println(c);
                         }
                         //default -> go back;
                     }
                 }
                 case 3 -> {
-                    Contact  c = a.searchById(i.toSearchId());
-                    String[] s = i.newContact();
+                    Contact     c;
+                    String[]    s;
+
+                    c = a.searchById(t.toSearchId());
+                    s = t.newContact();
                     a.updateContact(c, s);
-                    i.println(c);
+                    t.println(c);
                 }
-                case 4 -> a.deleteContact(i.toSearchId());
+                case 4 -> a.deleteContact(t.toSearchId());
                 case 5 -> {
                     return;
                 }
