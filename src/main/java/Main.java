@@ -17,7 +17,6 @@ public class Main {
                 case 2 -> {
                     int         searchOption;
                     String      s;
-                    Contact     c;
 
                     searchOption = t.chooseSearchOption();
                     switch (searchOption) {
@@ -27,23 +26,19 @@ public class Main {
                         }
                         case 2 -> {
                             s = t.toSearch();
-                            c = a.searchByName(s);
-                            t.println(c);
+                            t.println(a.searchByName(s));
                         }
                         case 3 -> {
                             s = t.toSearch();
-                            c = a.searchBySurname(s);
-                            t.println(c);
+                            t.println(a.searchBySurname(s));
                         }
                         case 4 -> {
                             s = t.toSearch();
-                            c = a.searchByPhone(s);
-                            t.println(c);
+                            t.println(a.searchByPhone(s));
                         }
                         case 5 -> {
                             s = t.toSearch();
-                            c = a.searchByEmail(s);
-                            t.println(c);
+                            t.println(a.searchByEmail(s));
                         }
                         //default -> go back;
                     }
